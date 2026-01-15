@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Coffee color system (Light) ===== */
+:root {
+  --coffee-50: #fdfbf8;
+  --coffee-100: #f7f1e8;
+  --coffee-200: #eadfce;
+  --coffee-300: #dcc6a8;
+  --coffee-400: #c9a06c; /* accent utama */
+  --coffee-500: #a77c45;
+  --coffee-600: #8b6335;
+  --coffee-700: #6f4d2a;
+  --coffee-900: #3b2916;
+
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--coffee-50);
+  color: var(--coffee-900);
+}
+
+/* Hilangkan highlight/outline aneh di beberapa browser */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Helpers */
+@layer components {
+  .surface {
+    background: #ffffff;
+    border: 1px solid var(--coffee-200);
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid var(--coffee-200);
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* ===== Buttons (fix: align icon & text, no weird box) ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    border-radius: .75rem; /* rounded-xl */
+    padding: .6rem 1rem;   /* sedikit lebih enak */
+    font-size: .875rem;    /* text-sm */
+    font-weight: 700;
+    line-height: 1;        /* ✅ penting: ikon & teks sejajar */
+    transition: all .2s ease;
+    user-select: none;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(201,160,108,0.35);
+  }
+
+  .btn-primary {
+    background: var(--coffee-400);
+    color: #ffffff;
+    border: 1px solid rgba(0,0,0,0.02);
+  }
+  .btn-primary:hover { background: var(--coffee-500); }
+  .btn-primary:active { background: var(--coffee-600); transform: translateY(1px); }
+
+  .btn-ghost {
+    background: #ffffff;
+    border: 1px solid var(--coffee-200);
+    color: var(--coffee-900);
+  }
+  .btn-ghost:hover { background: var(--coffee-100); }
+  .btn-ghost:active { transform: translateY(1px); }
+
+  /* tombol kecil (khusus header / navbar) */
+  .btn-sm {
+    padding: .5rem .9rem;
+    border-radius: .75rem;
+    font-size: .875rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    border-radius: 9999px;
+    border: 1px solid var(--coffee-300);
+    background: var(--coffee-100);
+    color: var(--coffee-700);
+    padding: .25rem .75rem;
+    font-size: .75rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .muted {
+    color: var(--coffee-600);
+  }
+
+  .section {
+    padding: 3.5rem 0; /* py-14 */
+    background: var(--coffee-50);
+  }
+  @media (min-width: 768px) {
+    .section { padding: 5rem 0; } /* md:py-20 */
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--coffee-900);
+  }
+  @media (min-width: 768px) {
+    .section-title { font-size: 1.875rem; } /* md:text-3xl */
+  }
+}
